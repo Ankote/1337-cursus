@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   fr_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aankote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 18:51:26 by aankote           #+#    #+#             */
-/*   Updated: 2022/10/12 18:51:29 by aankote          ###   ########.fr       */
+/*   Created: 2022/10/20 03:52:19 by aankote           #+#    #+#             */
+/*   Updated: 2022/10/20 03:52:23 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int ft_strncmp(const char *s1, const char *s2, size_t n)
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-    unsigned    int i;
+    char *p;
+    unsigned int i;
 
     i = 0;
-    while ((((unsigned char *)s1)[i] || ((unsigned char *)s2)[i]) && i < n)
+    p = ft_strdup(s);
+    if (p)
     {
-        if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
-            return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+    while (s[i])
+    {
+        p[i] = (*f)(i,((char *)s)[i]);
         i ++;
     }
+    return (p);
+    }
     return (0);
+    
 }

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-static int first_alloc(char const *s, char c)
+static char **first_alloc(char const *s, char c)
 {
     int i;
     int cpt;
@@ -42,7 +42,7 @@ static int first_alloc(char const *s, char c)
 
 char **ft_split(char const *s, char c)
 {
-    unsigned int i;
+    int i;
     int start;
     int k;
     char **p;
@@ -52,11 +52,11 @@ char **ft_split(char const *s, char c)
     k = 0;
     if ((p = first_alloc(s,c)))
     {
-        while (i <= strlen(s)) 
+        while (i <= ft_strlen(s)) 
         {
             if (s[i] != c && start == -1) 
                 start = i;
-            else if ((s[i] == c || i == strlen(s)) && start >= 0)
+            else if ((s[i] == c || i == ft_strlen(s)) && start >= 0)
             {
                 p[k++] = ft_substr(s,start,i - start);
                 start = -1;
@@ -64,6 +64,8 @@ char **ft_split(char const *s, char c)
         i++;
         }
         p[k] = NULL;  
+        return (p);
     }
+    return (0);
 }
 

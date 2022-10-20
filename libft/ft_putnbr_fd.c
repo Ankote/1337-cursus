@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aankote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 18:51:26 by aankote           #+#    #+#             */
-/*   Updated: 2022/10/12 18:51:29 by aankote          ###   ########.fr       */
+/*   Created: 2022/10/20 06:10:46 by aankote           #+#    #+#             */
+/*   Updated: 2022/10/20 06:10:47 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int ft_strncmp(const char *s1, const char *s2, size_t n)
+void ft_putnbr_fd(int n, int fd)
 {
-    unsigned    int i;
-
-    i = 0;
-    while ((((unsigned char *)s1)[i] || ((unsigned char *)s2)[i]) && i < n)
+    if (n == -2147483648)
     {
-        if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
-            return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
-        i ++;
+    ft_putstr_fd("-2147483648",fd);
+    n = -147483648;
     }
-    return (0);
+    else if(n < 0)
+    {
+        ft_putchar_fd('-', fd);
+        ft_putnbr_fd(-n,fd);
+    }
+    else if(n > 9)
+    {
+        ft_putnbr_fd(n / 10,fd);
+        ft_putchar_fd((n % 10) + 48,fd);
+    }
+    else
+    {
+        ft_putchar_fd((n % 10) + 48,fd);
+    }
 }

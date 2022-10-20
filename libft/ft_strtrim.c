@@ -11,76 +11,76 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-static int	testtrim(char const *s1, char const *set)
+static int	strbegin(char const *s1, char const *set)
 {
 	int	i;
-	int	test_start;
-	int	test_end;
+	int j;
+	int test;
 
 	i = 0;
-	test_start = 0;
-	test_end = 0;
-	while (set[i])
+	while (s1[i])
 	{
-		if (s1[0] == set[i])
-			test_start = 1;
-		if (s1[ft_strlen(s1) - 1] == set[i])
-			test_end = 1;
-		i++;
+		j = 0;
+		test = 0;
+		while (set[j])
+		{
+			if (set[j] == s1[i])
+			test = 1;
+			j ++;
+		}
+		if (test == 0)
+		return (i);
+		i ++;
 	}
-	if (test_start && test_end)
-		return (2);
-	else if (test_start)
-		return (1);
-	else if (test_end)
-		return (-1);
 	return (0);
 }
 
-static char	*allocmem(char const *s1, char const *set)
+static int	strend(char const *s1, char const *set)
 {
-	char	*strtrim;
+	int	i;
+	int j;
+	int test;
+	int cpt;
 
-	if (testtrim(s1, set) == 2)
+	i = ft_strlen(s1) - 1;
+	cpt = 0;
+	while (s1[i] && i >= 0)
 	{
-		strtrim = (char *)malloc(sizeof(strtrim) * (ft_strlen(s1) - 1));
+		j = 0;
+		test = 0;
+		while (set[j])
+		{
+			if (set[j] == s1[i])
+			test = 1;
+			j ++;
+		}
+		if (test == 0)
+		return (cpt);
+		i --;
+		cpt ++;
 	}
-	if (testtrim(s1, set) == 1 || testtrim(s1, set) == -1)
-	{
-		strtrim = (char *)malloc(sizeof(strtrim) * (ft_strlen(s1)));
-	}
-	if (testtrim(s1, set) == 0)
-	{
-		strtrim = (char *)malloc(sizeof(strtrim) * (ft_strlen(s1)) + 1);
-	}
-	return (strtrim);
+	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
-	int		start_i;
-	int		end_i;
-	char	*strtrim;
+	int i;
+	int j;
+	char *str;
 
-	i = 0;
-	start_i = 0;
-	end_i = ft_strlen(s1);
-	strtrim = allocmem(s1, set);
-	if (testtrim(s1, set) == 2)
+	i = strbegin(s1,set);
+	j = 0;
+	printf("%lu\n",sizeof(char) * (ft_strlen(s1) - strbegin(s1,set) - strend(s1,set) + 1));
+	if((str = malloc(sizeof(char) * (ft_strlen(s1) - strbegin(s1,set) - strend(s1,set) + 1))))
 	{
-		start_i ++;
-		end_i -= 2;
-	}
-	else if (testtrim(s1, set) == 1)
+	while (s1[i] && i < ft_strlen(s1) - strend(s1,set))
 	{
-		start_i ++;
-		end_i --;
+		str[j] = s1[i];
+		i ++;
+		j ++;
 	}
-	else if (testtrim(s1, set) == -1)
-		end_i --;
-	while (s1[start_i] && i < end_i)
-		strtrim[i++] = ((char *)s1)[start_i ++];
-	strtrim[i] = '\0';
-	return (strtrim);
+	str[j] = '\0';
+	return (str);
+	}
+	return (0);
 }

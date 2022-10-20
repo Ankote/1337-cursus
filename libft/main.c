@@ -15,9 +15,6 @@
 
 int	main()
 {
-	
-   char s1[100] = "abcdefghi";
-    char s2[100] = "";
-   printf("%s.\n",ft_strjoin(s1,s2));
+   ft_putnbr_fd(-23456789, 1);
 	return (0);
 }

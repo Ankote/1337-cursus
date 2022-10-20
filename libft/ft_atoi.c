@@ -31,5 +31,5 @@ int	ft_atoi(const char *str)
 		my_int = my_int * 10 + str[i] - 48;
 		i ++;
 	}
-	return (myInt * sign);
+	return (my_int * sign);
 }
