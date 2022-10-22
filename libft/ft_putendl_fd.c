@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aankote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 12:45:14 by aankote           #+#    #+#             */
-/*   Updated: 2022/10/11 14:45:09 by aankote          ###   ########.fr       */
+/*   Created: 2022/10/22 03:14:23 by aankote           #+#    #+#             */
+/*   Updated: 2022/10/22 03:16:55 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
- #include <stdlib.h>
-#include <string.h>
 
-int	main()
+void	ft_putendl_fd(char *s, int fd)
 {
-   
-   printf("%s",ft_substr("hola", 0, 18446744073709551616));  
-	return (0);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n',fd);
 }
