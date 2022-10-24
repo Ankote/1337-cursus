@@ -16,6 +16,12 @@
 int	main()
 {
    
-   printf("%s",ft_substr("hola", 0, 18446744073709551616));  
+  //char *s = "\085228";
+
+printf("|%d|\n",ft_atoi("9223372036854775807"));
+printf("|%d|\n",atoi("9223372036854775807"));
+
+//printf("%d",ft_atoi(s));
+	///* 2 */ mcheck(s, strlen("tripouille") + strlen("42") + 1); free(s); showLeaks();
 	return (0);
 }

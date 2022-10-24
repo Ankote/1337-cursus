@@ -20,18 +20,19 @@ char *ft_strjoin(char const *s1, char const *s2)
 
     i = 0;
     j = 0;
-    total_size = ft_strlen(s1) + ft_strlen(s2) + 1;
-    if((newstr = malloc(sizeof(newstr) * total_size)))
-    {
-        while (s1[i])
-        {
-            newstr [i] = s1[i];
-            i++;
-        }
-        while (s2[j])
-            newstr[i++] = s2[j++];
-        newstr[i] = '\0';
-        return (newstr);
-    }
+    if (!s1 || !s2)
     return (0);
+    total_size = ft_strlen(s1) + ft_strlen(s2);
+    newstr = malloc(sizeof(char) * (total_size + 1));
+    if(!newstr)
+        return (0);
+    while (s1[i])
+    {
+        newstr [i] = s1[i];
+        i++;
+    }
+    while (s2[j])
+        newstr[i++] = s2[j++];
+    newstr[i] = '\0';
+    return (newstr);
 }

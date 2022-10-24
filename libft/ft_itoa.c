@@ -6,7 +6,7 @@
 /*   By: aankote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 21:39:41 by aankote           #+#    #+#             */
-/*   Updated: 2022/10/20 01:02:30 by aankote          ###   ########.fr       */
+/*   Updated: 2022/10/24 04:16:39 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -22,9 +22,9 @@ static char	*alloc(int n)
 		cpt ++;
 		n /= 10;
 	}
-	if (n < 0 || n == 0)
+	if (n <= 0)
 	{
-		cpt = 1;
+		cpt ++;
 		n *= -1;
 	}
 	while (n > 0)
@@ -68,6 +68,8 @@ static char	*mini_itoa(int n)
 
 	index = nbdigits(n);
 	itoa = alloc(n);
+	if (!itoa)
+		return (0);
 	if (n == -2147483648)
 	{
 		itoa[1] = '2';
@@ -91,19 +93,21 @@ char	*ft_itoa(int n)
 {
 	char	*itoa;
 
-	itoa = alloc(n);
-	if (itoa != NULL)
+	if (n == 0)
 	{
-		if (n == 0)
+		itoa = alloc(n);
+		if (itoa)
 		{
 			itoa[0] = '0';
 			itoa[1] = '\0';
+			return (itoa);
 		}
-		else
-		{
-			itoa = mini_itoa(n);
-		}
-		return (itoa);
+	}
+	else
+	{
+		itoa = mini_itoa(n);
+		if (itoa)
+			return (itoa);
 	}
 	return (0);
 }

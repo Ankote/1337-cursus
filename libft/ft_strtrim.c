@@ -11,28 +11,32 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-static int	strbegin(char const *s1, char const *set)
+static char *trim1(char const *s1, char const *set)
 {
-	int	i;
-	int j;
-	int test;
+    int i;
+    int j;
+    int test;
 
 	i = 0;
-	while (s1[i])
-	{
-		j = 0;
-		test = 0;
-		while (set[j])
-		{
-			if (set[j] == s1[i])
-			test = 1;
-			j ++;
-		}
-		if (test == 0)
-		return (i);
-		i ++;
-	}
+	if((char*)s1 == NULL || (char *)set == NULL)
 	return (0);
+    while(s1[i])
+    {
+        test = 0;
+        j = 0;
+        while (set[j])
+        {
+            if(((char *)set)[j] == ((char *)s1)[i]){
+                test = 1;}
+			j ++;
+        }
+		if(i == ft_strlen(s1) - 1)
+		return (0);
+        if (test == 0)
+            return ((char *)s1 + i);
+            i ++;
+    }
+    return (0);
 }
 
 static int	strend(char const *s1, char const *set)
@@ -64,23 +68,27 @@ static int	strend(char const *s1, char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
+	char *trim;
+	char *s;
+	int len;
 	int i;
-	int j;
-	char *str;
 
-	i = strbegin(s1,set);
-	j = 0;
-	printf("%lu\n",sizeof(char) * (ft_strlen(s1) - strbegin(s1,set) - strend(s1,set) + 1));
-	if((str = malloc(sizeof(char) * (ft_strlen(s1) - strbegin(s1,set) - strend(s1,set) + 1))))
+	i = 0;
+	s = trim1(s1,set);
+	if(!s)
+	return(ft_strdup(""));
+    len = ft_strlen(trim1(s1,set)) - strend(s1,set);
+	trim = malloc(sizeof(char) * (len + 1));
+	
+	if (trim)
 	{
-	while (s1[i] && i < ft_strlen(s1) - strend(s1,set))
-	{
-		str[j] = s1[i];
-		i ++;
-		j ++;
+		while (s[i] && i < len)
+		{
+			trim[i] = s[i];
+			i ++;
+		}
+		trim[i] = '\0';
+		return (trim);
 	}
-	str[j] = '\0';
-	return (str);
-	}
-	return (0);
+    return (0);
 }
