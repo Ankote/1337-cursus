@@ -16,12 +16,15 @@
 int	main()
 {
    
-  //char *s = "\085228";
+  char s[10] = "abcdefghij";
+  char d[10] = "12345";
 
-printf("|%d|\n",ft_atoi("9223372036854775807"));
-printf("|%d|\n",atoi("9223372036854775807"));
+  char *dst;
+  char *src;
+  dst =  d;
+  src = s;
+  ft_strlcat(dst,src ,10);
+  printf("%s",dst);
 
-//printf("%d",ft_atoi(s));
-	///* 2 */ mcheck(s, strlen("tripouille") + strlen("42") + 1); free(s); showLeaks();
 	return (0);
 }

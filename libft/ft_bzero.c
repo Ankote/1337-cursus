@@ -6,14 +6,14 @@
 /*   By: aankote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 20:37:50 by aankote           #+#    #+#             */
-/*   Updated: 2022/10/07 21:15:54 by aankote          ###   ########.fr       */
+/*   Updated: 2022/10/25 00:03:14 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned int 	i;
+	unsigned int	i;
 
 	i = 0;
 	while (i < n)
