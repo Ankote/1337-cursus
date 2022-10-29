@@ -30,7 +30,7 @@ static char	*trim1(char const *s1, char const *set)
 				test = 1;
 			j ++;
 		}
-		if (i == ft_strlen(s1) - 1)
+		if (i == (int)ft_strlen(s1) - 1)
 			return (0);
 		if (test == 0)
 			return ((char *)s1 + i);
@@ -41,10 +41,10 @@ static char	*trim1(char const *s1, char const *set)
 
 static int	strend(char const *s1, char const *set)
 {
-	int	i;
-	int	j;
-	int	test;
-	int	cpt;
+	size_t	i;
+	int		j;
+	int		test;
+	int		cpt;
 
 	i = ft_strlen(s1) - 1;
 	cpt = 0;
@@ -68,10 +68,10 @@ static int	strend(char const *s1, char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*trim;
-	char	*s;
-	int		len;
-	int		i;
+	char		*trim;
+	char		*s;
+	size_t		len;
+	size_t		i;
 
 	i = 0;
 	s = trim1(s1, set);

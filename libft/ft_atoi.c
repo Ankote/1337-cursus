@@ -13,15 +13,13 @@
 
 int	ft_atoi(const char *str)
 {
-	int				i;
+	size_t				i;
 	unsigned long	my_int;
 	int				sign;
 
 	i = 0;
 	sign = 1;
 	my_int = 0;
-	if (str == NULL)
-		return (0);
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
 	if (str[i] == '+' || str[i] == '-')
