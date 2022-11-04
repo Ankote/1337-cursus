@@ -13,10 +13,10 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int			i;
-	int			j;
-	size_t		total_size;
-	char		*newstr;
+	int		i;
+	int		j;
+	size_t	total_size;
+	char	*newstr;
 
 	i = 0;
 	j = 0;
@@ -28,7 +28,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (0);
 	while (s1[i])
 	{
-		newstr [i] = s1[i];
+		newstr[i] = s1[i];
 		i++;
 	}
 	while (s2[j])

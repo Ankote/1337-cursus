@@ -22,7 +22,6 @@ $(NAME) : $(OBJCS)
 bonus :$(OBJCS_B)
 	$(ARC) $(NAME) $(OBJCS_B)
 
-
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 clean :

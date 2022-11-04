@@ -18,8 +18,6 @@ static char	*trim1(char const *s1, char const *set)
 	int	test;
 
 	i = 0;
-	if (!(char *)s1 || !(char *)set)
-		return (0);
 	while (s1[i])
 	{
 		test = 0;
@@ -28,13 +26,13 @@ static char	*trim1(char const *s1, char const *set)
 		{
 			if (((char *)set)[j] == ((char *)s1)[i])
 				test = 1;
-			j ++;
+			j++;
 		}
 		if (i == (int)ft_strlen(s1) - 1)
 			return (0);
 		if (test == 0)
 			return ((char *)s1 + i);
-		i ++;
+		i++;
 	}
 	return (0);
 }
@@ -55,25 +53,27 @@ static int	strend(char const *s1, char const *set)
 		while (set[j])
 		{
 			if (set[j] == s1[i])
-			test = 1;
-			j ++;
+				test = 1;
+			j++;
 		}
 		if (test == 0)
 			return (cpt);
-		i --;
-		cpt ++;
+		i--;
+		cpt++;
 	}
 	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char		*trim;
-	char		*s;
-	size_t		len;
-	size_t		i;
+	char	*trim;
+	char	*s;
+	size_t	len;
+	size_t	i;
 
 	i = 0;
+	if (!(char *)s1 || !(char *)set)
+		return (0);
 	s = trim1(s1, set);
 	if (!s)
 		return (ft_strdup(""));
@@ -84,7 +84,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (s[i] && i < len)
 	{
 		trim[i] = s[i];
-		i ++;
+		i++;
 	}
 	trim[i] = '\0';
 	return (trim);

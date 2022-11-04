@@ -30,7 +30,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	else
 		substr = (char *)malloc(sizeof(char) * (len + 1));
-	if (substr && s)
+	if (substr)
 	{
 		while (s[st] && st < len + start)
 			substr[i++] = s[st++];

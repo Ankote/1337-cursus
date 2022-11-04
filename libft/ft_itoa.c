@@ -17,20 +17,20 @@ static char	*alloc(int n)
 	int		cpt;
 
 	cpt = 0;
-	if (n == -2147483648)
+	if (n == INT_MIN)
 	{
-		cpt ++;
+		cpt++;
 		n /= 10;
 	}
 	if (n <= 0)
 	{
-		cpt ++;
+		cpt++;
 		n *= -1;
 	}
 	while (n > 0)
 	{
 		n /= 10;
-		cpt ++;
+		cpt++;
 	}
 	p = malloc(sizeof(char) * (cpt + 1));
 	if (p != NULL)
@@ -43,19 +43,19 @@ static int	nbdigits(int n)
 	int	cpt;
 
 	cpt = 0;
-	if (n == -2147483648)
+	if (n == INT_MIN)
 	{
-		cpt ++;
+		cpt++;
 		n /= 10;
 	}
 	if (n < 0)
 	{
-		cpt ++;
+		cpt++;
 		n *= -1;
 	}
 	while (n > 0)
 	{
-		cpt ++;
+		cpt++;
 		n /= 10;
 	}
 	return (cpt);
@@ -70,7 +70,7 @@ static char	*mini_itoa(int n)
 	itoa = alloc(n);
 	if (!itoa)
 		return (0);
-	if (n == -2147483648)
+	if (n == INT_MIN)
 	{
 		itoa[1] = '2';
 		n = -147483648;
@@ -80,10 +80,10 @@ static char	*mini_itoa(int n)
 		n *= -1;
 		itoa[0] = '-';
 	}
-	itoa[index --] = '\0';
+	itoa[index--] = '\0';
 	while (n > 0)
 	{
-		itoa[index --] = (n % 10) + 48;
+		itoa[index--] = (n % 10) + 48;
 		n /= 10;
 	}
 	return (itoa);

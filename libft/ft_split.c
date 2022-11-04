@@ -42,7 +42,7 @@ static char	**first_alloc(char const *s, char c)
 		if (s[i] != c && test == 0)
 		{
 			test = 1;
-			cpt ++;
+			cpt++;
 		}
 		if (s[i] == c)
 			test = 0;
@@ -52,19 +52,15 @@ static char	**first_alloc(char const *s, char c)
 	return (p);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**mini(char const *s, char c, char **p)
 {
-	size_t		i;
-	int			start;
-	size_t		k;
-	char		**p;
+	size_t	i;
+	size_t	k;
+	int		start;
 
 	i = 0;
-	start = -1;
 	k = 0;
-	p = first_alloc(s, c);
-	if (!p)
-		return (0);
+	start = -1;
 	while (i <= ft_strlen(s))
 	{
 		if (s[i] != c && start == -1)
@@ -80,4 +76,16 @@ char	**ft_split(char const *s, char c)
 	}
 	p[k] = NULL;
 	return (p);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**p;
+	char	**x;
+
+	p = first_alloc(s, c);
+	if (!p)
+		return (0);
+	x = mini(s, c, p);
+	return (x);
 }
